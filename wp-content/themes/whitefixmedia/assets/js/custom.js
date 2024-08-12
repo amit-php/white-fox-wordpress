@@ -32,15 +32,38 @@ jQuery(document).ready(function(){
 //     jQuery('video', this).get(0).pause();
 //   }
 // });
+// jQuery(document).ready(function(){
+//   var nowPlaying = "none";
+//   jQuery('div').hover(function(){
+//           nowPlaying = jQuery(this).find('iframe').attr('src');
+//           jQuery(this).find('iframe').attr('src',nowPlaying+'&autoplay=1');
+//       }, function(){
+//         jQuery(this).find('iframe').attr('src',nowPlaying);
+//       });
+// });
+
 jQuery(document).ready(function(){
-  var nowPlaying = "none";
   jQuery('div').hover(function(){
-          nowPlaying = jQuery(this).find('iframe').attr('src');
-          jQuery(this).find('iframe').attr('src',nowPlaying+'&autoplay=1');
-      }, function(){
-        jQuery(this).find('iframe').attr('src',nowPlaying);
-      });
+      var iframe = jQuery(this).find('iframe');
+      var src = iframe.attr('src');
+      
+      // Check if autoplay is already in the URL to prevent adding it multiple times
+      if (src && src.indexOf('autoplay=1') === -1) {
+          src += (src.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1';
+          iframe.attr('src', src);
+      }
+  }, function(){
+      var iframe = jQuery(this).find('iframe');
+      var src = iframe.attr('src');
+      
+      // Remove the autoplay parameter to stop the video
+      if (src) {
+          src = src.replace('&autoplay=1', '').replace('?autoplay=1', '');
+          iframe.attr('src', src);
+      }
+  });
 });
+
 
 jQuery(document).ready(function () {
   jQuery("#text-roller1").owlCarousel({
