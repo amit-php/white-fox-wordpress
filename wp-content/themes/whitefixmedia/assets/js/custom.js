@@ -43,7 +43,7 @@ jQuery(document).ready(function(){
 // });
 
 jQuery(document).ready(function(){
-  jQuery('div').hover(function(){
+  jQuery('.video').hover(function(){
       var iframe = jQuery(this).find('iframe');
       var src = iframe.attr('src');
       
