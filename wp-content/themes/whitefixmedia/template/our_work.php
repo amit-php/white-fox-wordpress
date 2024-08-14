@@ -6,34 +6,34 @@
 get_header();?>
       <section class="home-video-main common-padd">
         <div class="container-fluid">
-        <div class="loader-wrp" style="display: none;">
-            <div class="loader">
-            <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/loader1.gif" alt="">
-              <!-- <span style="--i: 6"></span>
-              <span style="--i: 7"></span>
-              <span style="--i: 8"></span>
-              <span style="--i: 9"></span>
-              <span style="--i: 10"></span>
-              <span style="--i: 11"></span>
-              <span style="--i: 12"></span>
-              <span style="--i: 13"></span>
-              <span style="--i: 14"></span>
-              <span style="--i: 15"></span>
-              <span style="--i: 16"></span>
-              <span style="--i: 17"></span>
-              <span style="--i: 18"></span>
-              <span style="--i: 19"></span>
-              <span style="--i: 20"></span> -->
-            </div>
-          </div>  
+              <div class="loader-wrp" style="display: none;">
+                <div class="loader">
+                <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/loader1.gif" alt="">
+                  <!-- <span style="--i: 6"></span>
+                  <span style="--i: 7"></span>
+                  <span style="--i: 8"></span>
+                  <span style="--i: 9"></span>
+                  <span style="--i: 10"></span>
+                  <span style="--i: 11"></span>
+                  <span style="--i: 12"></span>
+                  <span style="--i: 13"></span>
+                  <span style="--i: 14"></span>
+                  <span style="--i: 15"></span>
+                  <span style="--i: 16"></span>
+                  <span style="--i: 17"></span>
+                  <span style="--i: 18"></span>
+                  <span style="--i: 19"></span>
+                  <span style="--i: 20"></span> -->
+                </div>
+              </div>   
           <div class="row">
             <div class="col-md-12">
               <div class="filterBtnList">
               <ul class="d-flex justify-content-center">
-                      <div class="form-check">
+                      <li class="form-check ">
                         <input type="radio" value="" name="job-type" checked>
-                        <label for="option1">All</label><br>
-                      </div>
+                        <label for="option1" class="btn">All</label>
+                      </li>
 
                       <?php
                       $project_types = get_terms(
@@ -47,10 +47,10 @@ get_header();?>
                         foreach ($project_types as $type) {
                           $active_class = ($_GET['Ourworks_type'] ?? '') === $type->slug ? 'active' : '';
                           ?>
-                          <div class="form-check">
+                          <li class="form-check ">
                             <input type="radio" value="<?php echo $type->term_id; ?>" name="job-type">
-                            <label for="option1"><?php echo $type->name; ?></label>
-                          </div>
+                            <label for="option1" class="btn"><?php echo $type->name; ?></label>
+                          </li>
 
                           <?php
                         }
@@ -62,6 +62,7 @@ get_header();?>
           </div>
           
           <div class="row position-relative common-padd" id="result">
+          
           <?php
                       $post_perpage = 4;
                       $args = array(
@@ -83,7 +84,7 @@ get_header();?>
                                     $video_field = get_field('video_field');
                                     if ($video_field) {
                                         ?>
-                                        <iframe src="<?php echo $video_field; ?>" class="vdo w-100" frameborder="0"></iframe>
+                                        <iframe src="<?php echo $video_field; ?>&autoplay=1&title=0&byline=0&controls=0&muted=1" class="vdo w-100" frameborder="0" allow="autoplay; fullscreen" ></iframe>
                                     <?php } ?> 
                                     <div class="onhover-text">
                                         <h1><a href="<?php echo get_the_permalink(get_the_id()); ?>">#<?php the_title(); ?></a>...</h1>
@@ -225,5 +226,31 @@ get_header();?>
     });
   });
 </script>
+
+<!-- <script src="https://player.vimeo.com/api/player.js"></script>
+       <script>
+        jQuery(document).ready(function(){
+    jQuery(".video").hover(
+        function() {
+            var iframe = jQuery('iframe', this);
+            var player = new Vimeo.Player(iframe);
+
+            player.play().catch(function(error) {
+                console.log('Error playing the video:', error);
+            });
+        },
+        function() {
+            var iframe = jQuery('iframe', this);
+            var player = new Vimeo.Player(iframe);
+
+            player.pause().catch(function(error) {
+                console.log('Error pausing the video:', error);
+            });
+        }
+    );
+});
+
+
+       </script> -->
 
 <?php get_footer(); ?>

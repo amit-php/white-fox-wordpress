@@ -103,6 +103,8 @@ function weaversweb_scripts()
 	wp_enqueue_script('bootstrap-bundle-min-js', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), false);
 	wp_enqueue_script('font-awesome-all-min-js', get_template_directory_uri() . '/assets/js/font-awesome-all.min.js', array('jquery'), false);
 	wp_enqueue_script('owl-carousel-min', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), false);
+	wp_enqueue_script('player-vimeo', 'https://player.vimeo.com/api/player.js', array('jquery'), false);
+
 	// wp_enqueue_script('validator-js', 'https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.2-dev/js/formValidation.min.js', array('jquery'), false);
 	// wp_enqueue_script('boots-validator-js', 'https://hostssb.weavers-web.com/wp-content/themes/hostssb/assets/js/bootstrap-validation.js', array('jquery'), false);
 
@@ -210,7 +212,7 @@ function my_ajax_action_project()
 					$video_field = get_field('video_field');
 					if ($video_field) {
 						?>
-						<iframe src="<?php echo $video_field; ?>" class="vdo w-100" frameborder="0"></iframe>
+						<iframe src="<?php echo $video_field; ?>&autoplay=1&title=0&byline=0&controls=0&muted=1" class="vdo w-100" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 					<?php } ?> 
 					<div class="onhover-text">
 						<h1><a href="<?php echo get_the_permalink(get_the_id()); ?>">#<?php the_title(); ?></a>...</h1>
@@ -277,21 +279,21 @@ function load_more_projects()
 			$loop->the_post();
 			?>
 			<div class="col-md-6 filter <?php echo $term_classes_str; ?>">
-                                <div class="video">
-                                    <?php $imagepath = wp_get_attachment_image_src(get_post_thumbnail_id(), 'blog-thumb'); ?>
-                                    <img src="<?php echo $imagepath[0]; ?>" alt="">
-                                    <?php 
-                                    $video_field = get_field('video_field');
-                                    if ($video_field) {
-                                        ?>
-                                        <iframe src="<?php echo $video_field; ?>" class="vdo w-100" frameborder="0"></iframe>
-                                    <?php } ?> 
-                                    <div class="onhover-text">
-                                        <h1><a href="<?php echo get_the_permalink(get_the_id()); ?>">#<?php the_title(); ?></a>...</h1>
-                                        <p><?php echo get_the_excerpt(); ?></p>
-                                    </div>
-                                </div>
-                            </div>
+				<div class="video">
+					<?php $imagepath = wp_get_attachment_image_src(get_post_thumbnail_id(), 'blog-thumb'); ?>
+					<img src="<?php echo $imagepath[0]; ?>" alt="">
+					<?php 
+					$video_field = get_field('video_field');
+					if ($video_field) {
+						?>
+						<iframe src="<?php echo $video_field; ?>&autoplay=1&title=0&byline=0&controls=0&muted=1" class="vdo w-100" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+					<?php } ?> 
+					<div class="onhover-text">
+						<h1><a href="<?php echo get_the_permalink(get_the_id()); ?>">#<?php the_title(); ?></a>...</h1>
+						<p><?php echo get_the_excerpt(); ?></p>
+					</div>
+				</div>
+			</div>
 			<?php
 		}
 		//wp_reset_postdata(); // Reset post data after the loop

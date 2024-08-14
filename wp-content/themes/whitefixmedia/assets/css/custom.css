@@ -186,13 +186,15 @@ header .logo a { width: 120px; height: 120px; display: flex;align-items: center;
 .main-menu ul li.active a{color: #fff;}
 /*.filterBtnList {margin-bottom: 100px;}*/
 .filterBtnList ul{padding-left: 0; margin-bottom: 0; display: flex; flex-flow: row wrap; justify-content: center; list-style: none;}
-.filterBtnList ul li{margin-right: 20px;}
-.filterBtnList ul li .btn{padding: 5px; max-width: 250px; min-width: 250px; height: 60px; border-radius: 50px; border: 1px solid #555; background-color: transparent; color: #fff; font-weight: 400; text-transform: uppercase;}
+.filterBtnList ul li{margin-right: 20px; position: relative;}
+.filterBtnList ul li .btn{padding: 5px; max-width: 250px; min-width: 250px; height: 60px; border-radius: 50px; border: 1px solid #555; background-color: transparent; color: #fff; font-weight: 400; text-transform: uppercase; display: flex; justify-content: center; align-items: center; flex-flow: row wrap;}
 .filterBtnList ul li:last-child{margin-right: 0px;}
-.filterBtnList ul li .btn:hover, .filterBtnList ul li .btn.active{ background-color: #444; color: #fff; border-color: #555;}
+.filterBtnList ul li input[type="radio"] { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 100%; opacity: 0; cursor: pointer;}
+/*.filterBtnList ul li .btn.active,*/ .filterBtnList ul li .btn:hover, .filterBtnList ul li input[type="radio"]:checked~.btn { background-color: #444; color: #fff; border-color: #555;}
 
 .textBtn{padding: 0; font-size: 24px; text-transform: uppercase; color: #fff; font-weight: 700; background-color: transparent; box-shadow: none; border: none; border-bottom: 1px solid #fff; transition: all 0.6s ease-in-out 0s;}
 .textBtn:hover{color: #9c694b; border-color: #9c694b;}
+.loader-wrp { width: 90px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9;}
 
 /*-- Our work-page-css(End) --*/
 
@@ -274,6 +276,168 @@ header .logo a { width: 120px; height: 120px; display: flex;align-items: center;
 
 /*-- Contact-page-css(End) --*/
 
+
+
+.contact-formSec .form-floating label {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.contact-formSec .form-floating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    padding: 1rem .75rem;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: var(--bs-border-width) solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+}
+.contact-formSec .form-floating .form-control-plaintext label, 
+.contact-formSec .form-floating .form-control:focus label, 
+.contact-formSec .form-floating .form-control:not(:placeholder-shown) label, 
+.contact-formSec .form-floating .form-select label {
+    color: rgba(var(--bs-body-color-rgb), .65);
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+}
+
+.contact-formSec .form-floating .form-control-plaintext:focus, 
+.contact-formSec .form-floating .form-control-plaintext:not(:placeholder-shown), 
+.contact-formSec .form-floating .form-control:focus, 
+.contact-formSec .form-floating .form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem;
+}
+.contact-formSec .form-floating .form-control, 
+.contact-formSec .form-floating .form-control-plaintext {
+    padding: 1rem .75rem;
+}
+.contact-formSec .form-floating .form-control, 
+.contact-formSec .form-floating .form-control-plaintext, 
+.contact-formSec .form-floating .form-select {
+    height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+    min-height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+    line-height: 1.25;
+}
+.contact-formSec .form-floating .form-control-plaintext label::after, 
+.contact-formSec .form-floating .form-control:focus label::after, 
+.contact-formSec .form-floating .form-control:not(:placeholder-shown) label::after, 
+.contact-formSec .form-floating .form-select label::after {
+    position: absolute;
+    inset: 1rem 0.375rem;
+    z-index: -1;
+    height: 1.5em;
+    content: "";
+    background-color: var(--bs-body-bg);
+    border-radius: var(--bs-border-radius);
+}
+
+/*--***********--*/
+.contact-formSec .form-floating .form-control, .contact-formSec .form-floating .form-control-plaintext {
+    padding: 1rem .75rem
+}
+
+.contact-formSec .form-floating .form-control-plaintext::-moz-placeholder, .contact-formSec .form-floating .form-control::-moz-placeholder {
+    color: transparent
+}
+
+.contact-formSec .form-floating.form-control-plaintext::placeholder, .contact-formSec .form-floating .form-control::placeholder {
+    color: transparent
+}
+
+.contact-formSec .form-floating .form-control-plaintext:not(:-moz-placeholder-shown), .contact-formSec .form-floating .form-control:not(:-moz-placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+ .contact-formSec .form-floating .form-control-plaintext:focus, .contact-formSec .form-floating .form-control-plaintext:not(:placeholder-shown), .contact-formSec .form-floating .form-control:focus, .contact-formSec .form-floating .form-control:not(:placeholder-shown) {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.contact-formSec .form-floating .form-control-plaintext:-webkit-autofill, .contact-formSec .form-floating .form-control:-webkit-autofill {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.contact-formSec .form-floating .form-select {
+    padding-top: 1.625rem;
+    padding-bottom: .625rem
+}
+
+.contact-formSec .form-floating .form-control:not(:-moz-placeholder-shown) label {
+    color: rgba(var(--bs-body-color-rgb),.65);
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+}
+
+.contact-formSec .form-floating .form-control-plaintext label, .contact-formSec .form-floating .form-control:focus label, .contact-formSec .form-floating .form-control:not(:placeholder-shown) label, .contact-formSec .form-floating .form-select label {
+    color: rgba(var(--bs-body-color-rgb),.65);
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+}
+
+.contact-formSec .form-floating .form-control:not(:-moz-placeholder-shown) label::after {
+    position: absolute;
+    inset: 1rem 0.375rem;
+    z-index: -1;
+    height: 1.5em;
+    content: "";
+    background-color: var(--bs-body-bg);
+    border-radius: var(--bs-border-radius)
+}
+
+.contact-formSec .form-floating .form-control-plaintext label::after, .contact-formSec .form-floating .form-control:focus label::after, .contact-formSec .form-floating .form-control:not(:placeholder-shown) label::after, .contact-formSec.form-floating .form-select label::after {
+    position: absolute;
+    inset: 1rem 0.375rem;
+    z-index: -1;
+    height: 1.5em;
+    content: "";
+    background-color: var(--bs-body-bg);
+    border-radius: var(--bs-border-radius)
+}
+
+.contact-formSec .form-floating .form-control:-webkit-autofill label {
+    color: rgba(var(--bs-body-color-rgb),.65);
+    transform: scale(.85) translateY(-.5rem) translateX(.15rem)
+}
+
+.contact-formSec .form-floating .form-control-plaintext label {
+    border-width: var(--bs-border-width) 0
+}
+
+.contact-formSec .form-floating .form-control:disabled label, .contact-formSec .form-floating:disabled label {
+    color: #6c757d
+}
+
+.contact-formSec .form-floating .form-control:disabled label::after, .contact-formSec.form-floating:disabled label::after {
+    background-color: var(--bs-secondary-bg)
+}
+
+.contact-formSec .input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%
+}
+
+.contact-formSec .input-group .form-control, .contact-formSec .input-group .form-floating, .contact-formSec .input-group .form-select {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0
+}
+
+.contact-formSec .input-group .form-control:focus, .contact-formSec .input-group .form-floating:focus-within, .contact-formSec .input-group .form-select:focus {
+    z-index: 5
+}
 /*Media Query css*/
 
 

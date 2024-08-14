@@ -42,27 +42,8 @@ jQuery(document).ready(function(){
 //       });
 // });
 
-jQuery(document).ready(function(){
-  jQuery('.video').hover(function(){
-      var iframe = jQuery(this).find('iframe');
-      var src = iframe.attr('src');
-      
-      // Check if autoplay is already in the URL to prevent adding it multiple times
-      if (src && src.indexOf('autoplay=1') === -1) {
-          src += (src.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1';
-          iframe.attr('src', src);
-      }
-  }, function(){
-      var iframe = jQuery(this).find('iframe');
-      var src = iframe.attr('src');
-      
-      // Remove the autoplay parameter to stop the video
-      if (src) {
-          src = src.replace('&autoplay=1', '').replace('?autoplay=1', '');
-          iframe.attr('src', src);
-      }
-  });
-});
+
+
 
 
 jQuery(document).ready(function () {
@@ -229,3 +210,29 @@ jQuery(document).ready(function(){
 });
 
 // For-images-filter(End)
+// jQuery(document).ready(function(){
+//   jQuery('.vimeo-video-section').hover(
+//       function() {
+//           var iframe = jQuery(this).find('iframe');
+//           var src = iframe.data('src'); // Store the original src
+//           console.log(src);
+//           if (!src) {
+//               src = iframe.attr('src');
+//               iframe.data('src', src); // Save the original src for stopping the video later
+//           }
+          
+//           // Append autoplay only if it's not already there
+//           if (src.indexOf('autoplay=1') === -1) {
+//               var autoplaySrc = src + (src.indexOf('?') > -1 ? '&' : '?') + 'autoplay=1';
+//               iframe.attr('src', autoplaySrc);
+//           }
+//       },
+//       function() {
+//           var iframe = jQuery(this).find('iframe');
+//           var originalSrc = iframe.data('src'); // Retrieve the original src
+
+//           // Reset the src to stop the video
+//           iframe.attr('src', originalSrc);
+//       }
+//   );
+// });

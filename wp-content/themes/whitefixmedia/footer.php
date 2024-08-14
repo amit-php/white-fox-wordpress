@@ -48,8 +48,40 @@
     </footer>
 
   </div>
+  <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
 
   <?php wp_footer(); ?>
+  <script>
+  jQuery(document).ready(function(){
+    // Use event delegation
+    jQuery(document).on('mouseenter', '.video', function() {
+        var iframe = jQuery('iframe', this);
+        var player = new Vimeo.Player(iframe);
+
+        player.play().catch(function(error) {
+            console.log('Error playing the video:', error);
+        });
+    });
+
+    jQuery(document).on('mouseleave', '.video', function() {
+        var iframe = jQuery('iframe', this);
+        var player = new Vimeo.Player(iframe);
+
+        player.pause().catch(function(error) {
+            console.log('Error pausing the video:', error);
+        });
+    });
+  });
+</script>
+
+    <script>
+          jQuery(document).ready(function($) {
+   
+    $('.form-floating').on('click', function() {
+        $(this).toggleClass('clicked-div'); 
+          });
+});
+        </script>
 </body>
 
 </html>
